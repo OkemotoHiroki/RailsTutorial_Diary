@@ -1,0 +1,19 @@
+<%= form_with(model: journal) do |f| %>
+
+<div>
+    <%= f.label :date ,"日付"%>
+    <%= f.date_field :date%>
+</div>
+
+<div>
+    <%= f.label :title, "タイトル"%>
+    <%= f.text_field :title%>
+</div>
+
+<div>
+    <%= f.label :content, "本文"%>
+    <%= f.text_area :content%>
+</div>
+<%= f.submit @journal.new_record? ? "登録する": "更新する"%>
+
+<%end%>

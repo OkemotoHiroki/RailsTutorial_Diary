@@ -1,0 +1,24 @@
+<h1>
+    一言日記
+</h1>
+<p>
+<%= link_to "新規作成" , new_journal_path %>
+</p>
+<table>
+    <thread>
+        <tr>
+            <th>日付</th>
+            <th>タイトル</th>
+            <th></th>
+        </tr>
+    </thread>
+<% @journals.each do |journal| %>
+    <tr>
+        <td><%= journal.date %></td>
+        <td><%= journal.title %></td>
+        <td><%= link_to "詳細表示", journal_path(journal) %></td>
+    </tr>
+<% end %>
+</table>
+
+
