@@ -8,7 +8,7 @@ class JournalsController < ApplicationController
   end
 
   def new
-    @journal = Journal.new
+    @journal = Journal.new(date: params[:date])
   end
 
   def edit

@@ -22,3 +22,10 @@
 </table>
 
 
+<%= month_calendar events: @journals, attribute: :date do |date,journal|%>
+<% if journal.any? %>
+<%link_to date.day, journal_path(journal)%>
+<%else%>
+<%=link_to date.day, new_journal_path(date: date)%>
+<%end%>
+<%end%>
