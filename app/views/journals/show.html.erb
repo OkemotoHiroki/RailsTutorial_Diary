@@ -1,14 +1,15 @@
 
-<h1>
+<h1 class="text-3xl font-bold">
     <%= @journal.date %>
 </h1>
-<h2>
+<h2 class="text-2xl font-bold">
     <%= @journal.title%>
 </h2>
 <div>
+    
     <%= @journal.content %>
 </div>
 
-<%= link_to "編集", edit_journal_path(@journal)%>
-<%= link_to "削除", journal_path(@journal),data:{ turbo_method: :delete, turbo_confirm:"本当に削除しますか？"} %>
-<%= link_to "戻る", journals_path%>
+<%= link_to "編集", edit_journal_path(@journal),class:"text-blue-500 underline"%>
+<%= link_to "削除", journal_path(@journal),data:{ turbo_method: :delete, turbo_confirm:"本当に削除しますか？"} ,class:"text-blue-500 underline"%>
+<%= link_to "戻る", journals_path,class:"text-blue-500 underline"%>

@@ -66,3 +66,11 @@ group :test do
 end
 
 gem "simple_calendar"
+
+gem "tailwindcss-rails", "~> 4.4"
+
+# google-api-client for Google Calendar API
+gem "google-apis-calendar_v3"
+gem "omniauth-google-oauth2"
+
+gem "dotenv", groups: [ :development, :test ]

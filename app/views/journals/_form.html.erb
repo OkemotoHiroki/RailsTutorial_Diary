@@ -1,19 +1,23 @@
 <%= form_with(model: journal) do |f| %>
 
 <div>
-    <%= f.label :date ,"日付"%>
-    <%= f.date_field :date%>
+    <%= f.label :date ,"日付", class: "block"%>
+    <%= f.date_field :date,class:"mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500" %>
 </div>
 
 <div>
+    <div>
     <%= f.label :title, "タイトル"%>
-    <%= f.text_field :title%>
+    </div>
+    <div>
+    <%= f.text_field :title, class: "mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"%>
+    </div>
 </div>
 
 <div>
     <%= f.label :content, "本文"%>
-    <%= f.text_area :content%>
+    <%= f.text_area :content,class: "mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500"  %>
 </div>
-<%= f.submit @journal.new_record? ? "登録する": "更新する"%>
+<%= f.submit @journal.new_record? ? "登録する": "更新する",class: "w-full bg-blue-500 text-white py-2 rounded hover:bg-blue-600"%>
 
 <%end%>

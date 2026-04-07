@@ -1,31 +1,44 @@
-<h1>
+<h1 class="text-3xl font-bold">
     一言日記
 </h1>
 <p>
 <%= link_to "新規作成" , new_journal_path %>
 </p>
-<table>
+
+<%= month_calendar events: @journals, attribute: :date do |date,journals|%>
+    <% link_target =
+        if journals.any? 
+            journal_path(journals)
+        else
+            new_journal_path(date: date)
+        end
+    %>
+        <%link_to link_target,class: "block w-full h-full" do%>
+            <div class="top-1 left-1 font-bold">
+                <%=date.day%>
+            </div>
+            <% journals.each do |journal|%>
+                <%= journal.title%>
+            <%end%>
+            <div>
+            </div>
+        <%end%>
+<%end%>
+
+
+<table class="border bg-gray-100">
     <thread>
         <tr>
-            <th>日付</th>
-            <th>タイトル</th>
-            <th></th>
+            <th class="border">日付</th>
+            <th class="border">タイトル</th>
+            <th class="border"></th>
         </tr>
     </thread>
 <% @journals.each do |journal| %>
-    <tr>
-        <td><%= journal.date %></td>
-        <td><%= journal.title %></td>
-        <td><%= link_to "詳細表示", journal_path(journal) %></td>
+    <tr class="border-t">
+        <td class="border"><%= journal.date %></td>
+        <td class="border"><%= journal.title %></td>
+        <td class="border"><%= link_to "詳細表示", journal_path(journal) ,class: "text-blue-500 underline"%></td>
     </tr>
 <% end %>
 </table>
-
-
-<%= month_calendar events: @journals, attribute: :date do |date,journal|%>
-<% if journal.any? %>
-<%link_to date.day, journal_path(journal)%>
-<%else%>
-<%=link_to date.day, new_journal_path(date: date)%>
-<%end%>
-<%end%>
