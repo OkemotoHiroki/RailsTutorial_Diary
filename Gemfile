@@ -71,6 +71,11 @@ gem "tailwindcss-rails", "~> 4.4"
 
 # google-api-client for Google Calendar API
 gem "google-apis-calendar_v3"
+gem "omniauth"
 gem "omniauth-google-oauth2"
+gem "omniauth-rails_csrf_protection", "~> 0.1"
 
-gem "dotenv", groups: [ :development, :test ]
+gem "googleauth"
+gem "oauth2"
+
+gem "dotenv-rails", groups: [ :development, :test ]

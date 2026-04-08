@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get "google_oauth/start"
+  get "google_oauth/callback"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
@@ -12,4 +14,8 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   resources :journals
   root "journals#index"
+
+    get  "google_oauth/start",    to: "google_oauth#start"
+    get  "google_oauth/callback", to: "google_oauth#callback"
+    delete "logout", to: "sessions#destroy", as: "logout"
 end

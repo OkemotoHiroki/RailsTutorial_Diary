@@ -2,9 +2,12 @@
     一言日記
 </h1>
 <p>
-<%= link_to "新規作成" , new_journal_path %>
+<% if session[:access_token].present? %>
+  <%= link_to "ログアウト", logout_path,data:{ turbo_method: :delete} %>
+<% else %>
+  <%= link_to "Googleでログイン", google_oauth_start_path %>
+<% end %><%= link_to "新規作成" , new_journal_path %>
 </p>
-
 <%= month_calendar events: @journals, attribute: :date do |date,journals|%>
     <% link_target =
         if journals.any? 
