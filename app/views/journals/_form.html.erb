@@ -1,5 +1,14 @@
 <%= form_with(model: journal) do |f| %>
-
+<% if @journal.errors.any? %>
+  <div class="bg-red-100 border border-red-400 text-red-700 p-4 rounded mb-4">
+    <h2 class="font-bold">入力に問題があります:</h2>
+    <ul class="list-disc list-inside">
+      <% @journal.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
 <div>
     <%= f.label :date ,"日付", class: "block"%>
     <%= f.date_field :date,class:"mt-1 block w-full border border-gray-300 rounded-md p-2 focus:ring-blue-500 focus:border-blue-500" %>

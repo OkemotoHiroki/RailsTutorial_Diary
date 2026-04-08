@@ -23,12 +23,12 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <main class="container mx-auto mt-28 px-5">
-      <% flash.each do |message_type, message| %>
-        <div class="flash-message <%= message_type %>"><%= message %></div>
-      <% end %>
-
+  <body class="max-w-3xl mx-auto">
+      <%= render "layouts/flash_messages" %>
+    <header class="container mx-auto mt-5">
+      <%= render "layouts/google_auth_button"%>
+    </header>
+    <main class="container mx-auto mt-5 px-5">
       <%= yield %>
     </main>
   </body>

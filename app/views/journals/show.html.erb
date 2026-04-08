@@ -1,15 +1,21 @@
 
-<h1 class="text-3xl font-bold">
-    <%= @journal.date %>
-</h1>
-<h2 class="text-2xl font-bold">
-    <%= @journal.title%>
-</h2>
-<div>
-    
-    <%= @journal.content %>
+<div class="flex gap-2 items-start">
+<%= link_to "戻る", journals_path,class:"py-1 px-5 bg-gray-100/50 border rounded-2xl"%>
+    <div class="flex gap-2 ml-auto">
+        <%= link_to "編集", edit_journal_path(@journal),class:"py-1 px-5 bg-sky-500 rounded-2xl text-white"%>
+        <%= link_to "削除", journal_path(@journal),data:{ turbo_method: :delete, turbo_confirm:"本当に削除しますか？"} ,class:"py-1 px-5 bg-red-500 rounded-2xl text-white"%>
+    </div>
 </div>
 
-<%= link_to "編集", edit_journal_path(@journal),class:"text-blue-500 underline"%>
-<%= link_to "削除", journal_path(@journal),data:{ turbo_method: :delete, turbo_confirm:"本当に削除しますか？"} ,class:"text-blue-500 underline"%>
-<%= link_to "戻る", journals_path,class:"text-blue-500 underline"%>
+
+<div class="flex items-baseline gap-2 mb-4 border-b mt-5">
+    <h1 class="text-3xl font-bold flex">
+        <%= @journal.title%>
+    </h1>
+    <time class="text-sm text-gray-600 px-2">
+        <%= @journal.date.strftime("%Y年%-m月%-d日") %>
+    </time>
+</div>
+<div>
+    <%= simple_format(@journal.content) %>
+</div>

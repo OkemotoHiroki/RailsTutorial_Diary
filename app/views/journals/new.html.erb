@@ -1,8 +1,9 @@
-
+<div class="flex gap-2 items-start">
+    <%= link_to "一覧に戻る", journals_path,class:"py-1 px-5 bg-gray-100/50 border rounded-2xl"%>
+</div>
 <h1 class="text-3xl font-bold">
-    新規作成
+    日記の新規作成
 </h1>
 
 <%= render 'form' ,journal: @journal %>
 
-<%= link_to "一覧に戻る", journals_path,class:"text-blue-500 underline"%>
