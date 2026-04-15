@@ -6,7 +6,7 @@ class GoogleOauthController < ApplicationController
 
   CLIENT_ID = ENV["GOOGLE_CLIENT_ID"]
   CLIENT_SECRET = ENV["GOOGLE_CLIENT_SECRET"]
-  REDIRECT_URI = "http://localhost:3000/google_oauth/callback"
+  REDIRECT_URI = google_oauth_callback_url
 
   def start
     client = OAuth2::Client.new(
@@ -18,7 +18,7 @@ class GoogleOauthController < ApplicationController
     )
 
     redirect_to client.auth_code.authorize_url(
-      redirect_uri: "http://localhost:3000/google_oauth/callback",
+      redirect_uri: REDIRECT_URI,
       scope: "https://www.googleapis.com/auth/calendar",
       access_type: "offline",
       prompt: "consent"
@@ -36,7 +36,7 @@ class GoogleOauthController < ApplicationController
 
     token = client.auth_code.get_token(
       params[:code],
-      redirect_uri: "http://localhost:3000/google_oauth/callback"
+      redirect_uri: REDIRECT_URI
     )
 
     session[:access_token] = token.token
