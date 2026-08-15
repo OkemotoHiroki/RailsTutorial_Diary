@@ -73,7 +73,7 @@ gem "tailwindcss-rails", "~> 4.4"
 gem "google-apis-calendar_v3"
 gem "omniauth"
 gem "omniauth-google-oauth2"
-gem "omniauth-rails_csrf_protection", "~> 0.1"
+gem "omniauth-rails_csrf_protection", "~> 2.0"
 
 gem "googleauth"
 gem "oauth2"
